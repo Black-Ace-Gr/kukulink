@@ -1,0 +1,190 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+    color:#222;
+    background:#fafafa;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+
+}
+
+.navbar{
+
+    background:white;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+
+}
+
+.navbar .container{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+
+}
+
+.logo{
+
+    color:#2E7D32;
+
+}
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    display:inline-block;
+    background:#2E7D32;
+    color:white;
+    padding:12px 28px;
+    border-radius:6px;
+    text-decoration:none;
+
+}
+
+.hero{
+
+    padding:90px 0;
+
+}
+
+.hero-content{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+
+}
+
+.hero h1{
+
+    font-size:52px;
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:35px;
+
+}
+
+.hero img{
+
+    width:100%;
+    border-radius:15px;
+
+}
+
+footer{
+
+    margin-top:80px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:30px;
+
+}
+.hero{
+
+    padding:100px 0;
+    background:#f8fff8;
+
+}
+
+.hero h1{
+
+    color:#1f2937;
+    line-height:1.2;
+
+}
+
+.hero p{
+
+    color:#555;
+}
+
+.nav-link{
+
+    font-weight:600;
+}
+
+.nav-link:hover{
+
+    color:#198754 !important;
+
+}
+
+.btn{
+
+    border-radius:8px;
+}
+
+section{
+
+    padding:80px 0;
+}
+.category-card{
+
+    background:white;
+    border-radius:18px;
+    padding:40px 20px;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.icon-circle{
+
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#198754;
+    color:white;
+    font-size:35px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+    margin-bottom:20px;
+
+}

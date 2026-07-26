@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">Marketplace</h2>
+
+    <div class="row">
+
+        {% for product in products %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100">
+
+                <a href="{% url 'product_detail' product.id %}">
+                  <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                </a>
+
+                <div class="card-body">
+
+                    <h5>
+                      <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
+                        {{ product.title }}
+                      </a>
+                    </h5>
+
+                    <p>{{ product.category }}</p>
+
+                    <p><strong>KES {{ product.price }}</strong></p>
+
+                    <p>{{ product.county }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p>No products available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

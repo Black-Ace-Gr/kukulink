@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <img
+                src="{{ product.image.url }}"
+                class="img-fluid rounded shadow"
+            >
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <h1>{{ product.title }}</h1>
+
+            <p class="text-success fs-3">
+
+                KES {{ product.price }}
+
+            </p>
+
+            <hr>
+
+            <p>
+
+                {{ product.description }}
+
+            </p>
+
+            <p>
+
+                <strong>County:</strong>
+
+                {{ product.county }}
+
+            </p>
+
+            <p>
+
+                <strong>Available:</strong>
+
+                {{ product.quantity }}
+
+            </p>
+
+            <button class="btn btn-success btn-lg">
+
+                Contact Seller
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
