@@ -8,8 +8,10 @@ class FarmAdmin(admin.ModelAdmin):
 
     list_display = (
         "name",
+        "owner",
         "county",
         "verified",
+        "created_at",
     )
 
     list_filter = (
@@ -19,5 +21,10 @@ class FarmAdmin(admin.ModelAdmin):
 
     search_fields = (
         "name",
+        "owner__username",
         "county",
+    )
+
+    list_editable = (
+        "verified",
     )

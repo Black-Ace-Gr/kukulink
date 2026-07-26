@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    {% if farm.cover_image %}
+        <img src="{{ farm.cover_image.url }}"
+             class="img-fluid rounded mb-4">
+    {% endif %}
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            {% if farm.logo %}
+                <img src="{{ farm.logo.url }}"
+                     class="img-fluid rounded-circle">
+            {% endif %}
+
+        </div>
+
+        <div class="col-md-9">
+
+            <h2>{{ farm.name }}</h2>
+
+            <p>{{ farm.description }}</p>
+
+            <p><strong>County:</strong> {{ farm.county }}</p>
+
+            <p><strong>Location:</strong> {{ farm.location }}</p>
+
+            <p><strong>Phone:</strong> {{ farm.phone }}</p>
+
+            <p><strong>Email:</strong> {{ farm.email }}</p>
+
+            {% if farm.verified %}
+                <span class="badge bg-success">
+                    Verified Farm
+                </span>
+            {% endif %}
+
+            <br><br>
+
+            <a href="{% url 'farms:edit' %}"
+               class="btn btn-warning">
+
+                Edit Farm
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
