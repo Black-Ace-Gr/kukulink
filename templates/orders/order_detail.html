@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h2>Order #{{ order.id }}</h2>
+
+<hr>
+
+<p><strong>Product:</strong> {{ order.product.title }}</p>
+
+<p><strong>Buyer:</strong> {{ order.buyer.username }}</p>
+
+<p><strong>Quantity:</strong> {{ order.quantity }}</p>
+
+<p><strong>Total:</strong> KES {{ order.total_price }}</p>
+
+<p><strong>Status:</strong> {{ order.status }}</p>
+
+<p><strong>Ordered:</strong> {{ order.created_at }}</p>
+
+</div>
+
+{% endblock %}

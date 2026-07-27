@@ -6,13 +6,10 @@ from .models import Category, Product
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 
-    list_display = ("name", "slug")
-
-    search_fields = ("name",)
-
-    prepopulated_fields = {
-        "slug": ("name",)
-    }
+    list_display = (
+        "id",
+        "name",
+    )
 
 
 @admin.register(Product)
@@ -20,24 +17,19 @@ class ProductAdmin(admin.ModelAdmin):
 
     list_display = (
         "title",
+        "farm",
         "category",
         "price",
         "quantity",
-        "county",
         "available",
     )
 
     list_filter = (
         "category",
-        "county",
-        "available",
-    )
-
-    list_editable = (
         "available",
     )
 
     search_fields = (
         "title",
-        "county",
+        "farm__name",
     )

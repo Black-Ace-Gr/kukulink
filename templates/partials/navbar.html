@@ -1,66 +1,147 @@
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
 
-    <div class="container">
+<div class="container">
 
-        <a class="navbar-brand fw-bold text-success fs-3" href="/">
-            KukuLink
-        </a>
+<a class="navbar-brand fw-bold"
+href="/">
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+🐔 Kuku Link
 
-            <span class="navbar-toggler-icon"></span>
+</a>
 
-        </button>
+<button
+class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#navbar">
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+<span class="navbar-toggler-icon"></span>
 
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-                {% if user.is_authenticated %}
-                <a href="{% url 'farms:my_farm' %}">My Farm</a>
-                {% endif %}
+</button>
 
-                {% if user.is_authenticated %}
-                <a href="{% url 'accounts:profile' %}">Profile</a>
-                <a href="{% url 'accounts:logout' %}">Logout</a>
-                {% else %}
-                <a href="{% url 'accounts:login' %}">Login</a>
-                <a href="{% url 'accounts:register' %}">Register</a>
-                {% endif %}
+<div
+class="collapse navbar-collapse"
+id="navbar">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
+<ul class="navbar-nav ms-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'marketplace' %}">Marketplace</a>
-                </li>
+<li class="nav-item">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
+<a
+class="nav-link"
+href="/">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+Home
 
+</a>
 
-                <li class="nav-item ms-lg-3">
+</li>
 
-                    <a href="#" class="btn btn-success px-4">
+<li class="nav-item">
 
-                        Get Started
+<a
+class="nav-link"
+href="{% url 'marketplace:list' %}">
 
-                    </a>
+Marketplace
 
-                </li>
+</a>
 
-            </ul>
+</li>
 
-        </div>
+{% if user.is_authenticated %}
 
-    </div>
+<li class="nav-item">
+
+<a
+class="nav-link"
+href="{% url 'dashboard:dashboard' %}">
+
+Dashboard
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+class="nav-link"
+href="{% url 'farms:my_farm' %}">
+
+My Farm
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+class="nav-link"
+href="{% url 'marketplace:my_products' %}">
+
+Products
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+class="nav-link"
+href="{% url 'orders:buyer_orders' %}">
+
+Orders
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+class="nav-link text-warning"
+href="{% url 'accounts:logout' %}">
+
+Logout
+
+</a>
+
+</li>
+
+{% else %}
+
+<li class="nav-item">
+
+<a
+class="nav-link"
+href="{% url 'accounts:login' %}">
+
+Login
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+class="btn btn-light ms-2"
+href="{% url 'accounts:register' %}">
+
+Get Started
+
+</a>
+
+</li>
+
+{% endif %}
+
+</ul>
+
+</div>
+
+</div>
 
 </nav>

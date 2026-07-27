@@ -1,63 +1,80 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}{{ product.title }}{% endblock %}
 
 {% block content %}
 
 <div class="container py-5">
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-lg-6">
+<div class="col-lg-6">
 
-            <img
-                src="{{ product.image.url }}"
-                class="img-fluid rounded shadow"
-            >
+<img
+src="{{ product.image.url }}"
+class="img-fluid rounded shadow">
 
-        </div>
+</div>
 
-        <div class="col-lg-6">
+<div class="col-lg-6">
 
-            <h1>{{ product.title }}</h1>
+<span class="badge bg-success">
 
-            <p class="text-success fs-3">
+{{ product.category }}
 
-                KES {{ product.price }}
+</span>
 
-            </p>
+<h2 class="mt-3">
 
-            <hr>
+{{ product.title }}
 
-            <p>
+</h2>
 
-                {{ product.description }}
+<h3 class="text-success">
 
-            </p>
+KES {{ product.price }}
 
-            <p>
+</h3>
 
-                <strong>County:</strong>
+<p>
 
-                {{ product.county }}
+{{ product.description }}
 
-            </p>
+</p>
 
-            <p>
+<hr>
 
-                <strong>Available:</strong>
+<p><strong>Farm:</strong> {{ product.farm.name }}</p>
 
-                {{ product.quantity }}
+<p><strong>County:</strong> {{ product.farm.county }}</p>
 
-            </p>
+<p><strong>Available Quantity:</strong> {{ product.quantity }}</p>
 
-            <button class="btn btn-success btn-lg">
+{% if user.is_authenticated %}
 
-                Contact Seller
+<a
+href="{% url 'orders:place' product.id %}"
+class="btn btn-success btn-lg">
 
-            </button>
+Order Now
 
-        </div>
+</a>
 
-    </div>
+{% else %}
+
+<a
+href="{% url 'accounts:login' %}"
+class="btn btn-outline-success btn-lg">
+
+Login to Order
+
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
 
 </div>
 

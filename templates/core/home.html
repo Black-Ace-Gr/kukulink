@@ -1,294 +1,271 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}Kuku Link | Home{% endblock %}
 
 {% block content %}
 
 <section class="hero">
 
-    <div class="container">
+<div class="container text-center">
 
-        <div class="row align-items-center">
+<h1 class="display-3 fw-bold">
 
-            <div class="col-lg-6">
+Connecting Poultry Farmers to Buyers
 
-                <span class="badge bg-success mb-3">
-                    Kenya's Trusted Poultry Marketplace
-                </span>
+</h1>
 
-                <h1 class="display-4 fw-bold">
+<p class="lead mt-4">
 
-                    Buy & Sell Poultry
-                    With Confidence
+Buy poultry products directly from trusted farms across Kenya.
 
-                </h1>
+</p>
 
-                <p class="lead mt-4">
+<a
+href="{% url 'marketplace:list' %}"
+class="btn btn-success btn-lg me-3">
 
-                    Kuku Link connects poultry farmers,
-                    hatcheries, suppliers and buyers on
-                    one trusted digital platform.
+Browse Marketplace
 
-                </p>
+</a>
 
-                <div class="mt-4">
+<a
+href="{% url 'accounts:register' %}"
+class="btn btn-outline-light btn-lg">
 
-                    <a href="#" class="btn btn-success btn-lg">
+Join Today
 
-                        Explore Marketplace
+</a>
 
-                    </a>
+</div>
 
-                    <a href="#features"
-                       class="btn btn-outline-success btn-lg ms-2">
+</section>
+<section class="container py-5">
 
-                        Learn More
+<div class="row text-center">
 
-                    </a>
+<div class="col-md-4">
 
-                </div>
+<h2 class="display-5 text-success">
 
-            </div>
+{{ farm_count }}
 
-            <div class="col-lg-6 text-center">
+</h2>
 
-                <img src="https://placehold.co/650x500"
-                     class="img-fluid rounded-4 shadow"
-                     alt="Hero">
+<p>Registered Farms</p>
 
-            </div>
+</div>
 
-        </div>
+<div class="col-md-4">
 
-    </div>
+<h2 class="display-5 text-success">
+
+{{ product_count }}
+
+</h2>
+
+<p>Products</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h2 class="display-5 text-success">
+
+{{ order_count }}
+
+</h2>
+
+<p>Orders</p>
+
+</div>
+
+</div>
 
 </section>
 
-<section id="features">
 
-    <div class="container">
+<section class="container py-5">
 
-        <div class="text-center mb-5">
+<h2 class="section-title text-center">
 
-            <h2 class="fw-bold">
+Categories
 
-                Why Choose Kuku Link?
+</h2>
 
-            </h2>
+<div class="row">
 
-            <p class="text-muted">
+{% for category in categories %}
 
-                Everything you need for poultry business in one place.
+<div class="col-md-4 mb-4">
 
-            </p>
+<div class="card shadow-soft text-center p-4">
 
-        </div>
+<h4>
 
-        <div class="row g-4">
+{{ category.name }}
 
-            <div class="col-md-4">
+</h4>
 
-                <div class="card h-100 shadow-sm border-0">
+</div>
 
-                    <div class="card-body text-center">
+</div>
 
-                        <i class="bi bi-shop fs-1 text-success"></i>
+{% empty %}
 
-                        <h4 class="mt-3">
+<p class="text-center">
 
-                            Marketplace
+No categories yet.
 
-                        </h4>
+</p>
 
-                        <p>
+{% endfor %}
 
-                            Buy and sell poultry products with ease.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card h-100 shadow-sm border-0">
-
-                    <div class="card-body text-center">
-
-                        <i class="bi bi-shield-check fs-1 text-success"></i>
-
-                        <h4 class="mt-3">
-
-                            Verified Farmers
-
-                        </h4>
-
-                        <p>
-
-                            Connect with trusted poultry suppliers.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card h-100 shadow-sm border-0">
-
-                    <div class="card-body text-center">
-
-                        <i class="bi bi-truck fs-1 text-success"></i>
-
-                        <h4 class="mt-3">
-
-                            Fast Delivery
-
-                        </h4>
-
-                        <p>
-
-                            Find suppliers close to your location.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<section class="py-5 bg-light">
 
-    <div class="container">
+<section class="container py-5">
 
-        <div class="text-center mb-5">
+<h2 class="section-title text-center">
 
-            <h2 class="fw-bold">
-                Browse Categories
-            </h2>
+Latest Products
 
-            <p class="text-muted">
-                Everything for your poultry business.
-            </p>
+</h2>
 
-        </div>
+<div class="row">
 
-        <div class="row g-4">
+{% for product in products %}
 
-            <div class="col-md-3">
-                <div class="category-card text-center">
+<div class="col-lg-3 col-md-6 mb-4">
 
-                    <div class="icon-circle">
-                        🐔
-                    </div>
+<div class="card h-100">
 
-                    <h5>Live Chickens</h5>
+<img
+src="{{ product.image.url }}"
+class="card-img-top"
+style="height:220px;">
 
-                </div>
-            </div>
+<div class="card-body">
 
-            <div class="col-md-3">
-                <div class="category-card text-center">
+<h5>
 
-                    <div class="icon-circle">
-                        🥚
-                    </div>
+{{ product.title }}
 
-                    <h5>Eggs</h5>
+</h5>
 
-                </div>
-            </div>
+<p class="text-success fw-bold">
 
-            <div class="col-md-3">
-                <div class="category-card text-center">
+KES {{ product.price }}
 
-                    <div class="icon-circle">
-                        🐣
-                    </div>
+</p>
 
-                    <h5>Chicks</h5>
+<a
+href="{% url 'marketplace:detail' product.id %}"
+class="btn btn-success w-100">
 
-                </div>
-            </div>
+View Product
 
-            <div class="col-md-3">
-                <div class="category-card text-center">
+</a>
 
-                    <div class="icon-circle">
-                        🌽
-                    </div>
+</div>
 
-                    <h5>Feeds</h5>
+</div>
 
-                </div>
-            </div>
+</div>
 
-        </div>
+{% empty %}
 
-    </div>
+<p class="text-center">
+
+No products available.
+
+</p>
+
+{% endfor %}
+
+</div>
 
 </section>
 
-<section class="py-5">
 
-    <div class="container">
+<section class="bg-white py-5">
 
-        <div class="text-center mb-5">
+<div class="container">
 
-            <h2 class="fw-bold">
-                How Kuku Link Works
-            </h2>
+<h2 class="section-title text-center">
 
-        </div>
+Why Choose Kuku Link?
 
-        <div class="row text-center">
+</h2>
 
-            <div class="col-md-4">
+<div class="row text-center">
 
-                <h1 class="text-success">1</h1>
+<div class="col-md-3">
 
-                <h4>Create Account</h4>
+<h4>🐔</h4>
 
-                <p>Register as a farmer or buyer.</p>
+<h5>Trusted Farmers</h5>
 
-            </div>
+</div>
 
-            <div class="col-md-4">
+<div class="col-md-3">
 
-                <h1 class="text-success">2</h1>
+<h4>🚚</h4>
 
-                <h4>Browse Listings</h4>
+<h5>Easy Ordering</h5>
 
-                <p>Find verified poultry products.</p>
+</div>
 
-            </div>
+<div class="col-md-3">
 
-            <div class="col-md-4">
+<h4>🇰🇪</h4>
 
-                <h1 class="text-success">3</h1>
+<h5>Nationwide Reach</h5>
 
-                <h4>Connect & Trade</h4>
+</div>
 
-                <p>Place orders and grow your business.</p>
+<div class="col-md-3">
 
-            </div>
+<h4>🔒</h4>
 
-        </div>
+<h5>Secure Platform</h5>
 
-    </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
+
+<section class="bg-success text-white py-5">
+
+<div class="container text-center">
+
+<h2>
+
+Ready to Grow Your Poultry Business?
+
+</h2>
+
+<p>
+
+Join thousands of farmers and buyers using Kuku Link.
+
+</p>
+
+<a
+href="{% url 'accounts:register' %}"
+class="btn btn-light btn-lg">
+
+Create Free Account
+
+</a>
+
+</div>
+
+</section>
 
 {% endblock %}
