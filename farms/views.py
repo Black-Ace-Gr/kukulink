@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -8,8 +9,8 @@ from .models import Farm
 @login_required
 def create_farm(request):
 
-    # Prevent multiple farms
     if Farm.objects.filter(owner=request.user).exists():
+        messages.info(request, "You already have a farm.")
         return redirect("farms:my_farm")
 
     if request.method == "POST":
@@ -22,10 +23,13 @@ def create_farm(request):
         if form.is_valid():
 
             farm = form.save(commit=False)
-
             farm.owner = request.user
-
             farm.save()
+
+            messages.success(
+                request,
+                "Farm created successfully."
+            )
 
             return redirect("farms:my_farm")
 
@@ -79,11 +83,18 @@ def edit_farm(request):
 
             form.save()
 
+            messages.success(
+                request,
+                "Farm updated successfully."
+            )
+
             return redirect("farms:my_farm")
 
     else:
 
-        form = FarmForm(instance=farm)
+        form = FarmForm(
+            instance=farm
+        )
 
     return render(
         request,

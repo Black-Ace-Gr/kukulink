@@ -6,8 +6,7 @@ class Farm(models.Model):
 
     owner = models.OneToOneField(
         User,
-        on_delete=models.CASCADE,
-        related_name="farm"
+        on_delete=models.CASCADE
     )
 
     name = models.CharField(
@@ -53,10 +52,6 @@ class Farm(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
-
-    class Meta:
-
-        ordering = ["name"]
 
     def __str__(self):
 

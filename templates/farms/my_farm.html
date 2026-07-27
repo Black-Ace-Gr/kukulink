@@ -4,54 +4,105 @@
 
 <div class="container py-5">
 
-    {% if farm.cover_image %}
-        <img src="{{ farm.cover_image.url }}"
-             class="img-fluid rounded mb-4">
-    {% endif %}
+{% if farm.cover_image %}
 
-    <div class="row">
+<img
+src="{{ farm.cover_image.url }}"
+class="img-fluid rounded mb-4">
 
-        <div class="col-md-3">
+{% endif %}
 
-            {% if farm.logo %}
-                <img src="{{ farm.logo.url }}"
-                     class="img-fluid rounded-circle">
-            {% endif %}
+<div class="card shadow">
 
-        </div>
+<div class="card-body">
 
-        <div class="col-md-9">
+<div class="row">
 
-            <h2>{{ farm.name }}</h2>
+<div class="col-md-3 text-center">
 
-            <p>{{ farm.description }}</p>
+{% if farm.logo %}
 
-            <p><strong>County:</strong> {{ farm.county }}</p>
+<img
+src="{{ farm.logo.url }}"
+class="img-fluid rounded-circle mb-3">
 
-            <p><strong>Location:</strong> {{ farm.location }}</p>
+{% endif %}
 
-            <p><strong>Phone:</strong> {{ farm.phone }}</p>
+</div>
 
-            <p><strong>Email:</strong> {{ farm.email }}</p>
+<div class="col-md-9">
 
-            {% if farm.verified %}
-                <span class="badge bg-success">
-                    Verified Farm
-                </span>
-            {% endif %}
+<h2>
 
-            <br><br>
+{{ farm.name }}
 
-            <a href="{% url 'farms:edit' %}"
-               class="btn btn-warning">
+{% if farm.verified %}
 
-                Edit Farm
+<span class="badge bg-success">
 
-            </a>
+Verified
 
-        </div>
+</span>
 
-    </div>
+{% endif %}
+
+</h2>
+
+<hr>
+
+<p>
+
+{{ farm.description }}
+
+</p>
+
+<p>
+
+<strong>County:</strong>
+
+{{ farm.county }}
+
+</p>
+
+<p>
+
+<strong>Location:</strong>
+
+{{ farm.location }}
+
+</p>
+
+<p>
+
+<strong>Phone:</strong>
+
+{{ farm.phone }}
+
+</p>
+
+<p>
+
+<strong>Email:</strong>
+
+{{ farm.email }}
+
+</p>
+
+<a
+href="{% url 'farms:edit' %}"
+class="btn btn-warning">
+
+Edit Farm
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
