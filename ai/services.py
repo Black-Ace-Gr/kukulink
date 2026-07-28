@@ -1,27 +1,37 @@
 from google import genai
 from django.conf import settings
 from .prompts import SYSTEM_PROMPT
+from .context import search_products, serialize
 
+client = genai.Client(
+    api_key=settings.GEMINI_API_KEY
+)
 
 def ask_ai(question):
-    try:
-        client = genai.Client(
-            api_key=settings.GEMINI_API_KEY
-        )
+    products = search_products(question)
+    context = serialize(products)
+    prompt = f"""
+{SYSTEM_PROMPT}
 
-        response = client.models.generate_content(
-            model="gemini-2.5-flash-lite",
-            contents=[
-                SYSTEM_PROMPT,
-                question,
-            ],
-        )
+Marketplace Data
 
-        return response.text
+{context}
 
-    except Exception as e:
-        print(e)
-        return (
-            "Sorry, Kuku AI is temporarily unavailable. "
-            "Please try again in a moment."
-        )
+Question
+
+{question}
+
+Answer using the marketplace data whenever possible.
+
+If no marketplace data answers the question,
+answer using poultry knowledge.
+
+Never invent products that do not exist.
+"""
+
+    response = client.models.generate_content(
+        model="gemini-3.6-flash",
+        contents=prompt
+    )
+
+    return response.text
