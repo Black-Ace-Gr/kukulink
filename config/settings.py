@@ -16,6 +16,9 @@ if load_dotenv:
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY environment variable is missing.")
+
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
@@ -77,20 +80,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 import dj_database_url
 
-DATABASE_URL = os.getenv("DATABASE_URL")
 
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(DATABASE_URL)
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
+}
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -108,7 +103,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
@@ -137,3 +132,4 @@ LOGGING = {
         "level": "INFO",
     },
 }
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

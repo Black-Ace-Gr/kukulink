@@ -5,18 +5,21 @@ from .prompts import SYSTEM_PROMPT
 from .context import search_products, serialize
 
 
-def ask_ai(question: str) -> str | None:
+def get_client():
     """
-    Ask Gemini using marketplace context.
+    Lazily create the Gemini client so the application
+    can start even if the AI endpoint isn't used.
     """
-
     if not settings.GEMINI_API_KEY:
         raise RuntimeError(
-            "GEMINI_API_KEY is not configured. "
-            "Add it to your Vercel Environment Variables."
+            "GEMINI_API_KEY environment variable is not set."
         )
 
-    client = genai.Client(api_key=settings.GEMINI_API_KEY)
+    return genai.Client(api_key=settings.GEMINI_API_KEY)
+
+
+def ask_ai(question):
+    client = get_client()
 
     products = search_products(question)
     context = serialize(products)
