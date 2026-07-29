@@ -20,17 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("core.urls")),
-    path('accounts/', include("accounts.urls")),
-    path('marketplace/', include("marketplace.urls")),
-    path('dashboard/', include("dashboard.urls")),
-    path('farms/', include("farms.urls")),
-    path('orders/', include("orders.urls")),
-    path('ai/', include("ai.urls")),
+    path("admin/", admin.site.urls),
+    path("", include("core.urls")),
+    path("accounts/", include("accounts.urls")),
+    path("marketplace/", include("marketplace.urls")),
+    path("orders/", include("orders.urls")),
+    path("farms/", include("farms.urls")),
+    path("ai/", include("ai.urls")),
 ]
+
 if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
-    )
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

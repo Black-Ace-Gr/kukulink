@@ -68,10 +68,12 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
+                "django.template.context_processors.static",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-            ],
+],
         },
     },
 ]
@@ -137,3 +139,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 print("SECRET_KEY exists:", bool(os.getenv("SECRET_KEY")))
 print("DATABASE_URL exists:", bool(os.getenv("DATABASE_URL")))
 print("GEMINI_API_KEY exists:", bool(os.getenv("GEMINI_API_KEY")))
+print("DEBUG:", DEBUG)
