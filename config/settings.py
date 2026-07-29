@@ -133,3 +133,7 @@ LOGGING = {
     },
 }
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+print("SECRET_KEY exists:", bool(os.getenv("SECRET_KEY")))
+print("DATABASE_URL exists:", bool(os.getenv("DATABASE_URL")))
+print("GEMINI_API_KEY exists:", bool(os.getenv("GEMINI_API_KEY")))
