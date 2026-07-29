@@ -31,7 +31,6 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-print("Gemini Key:", GEMINI_API_KEY)
 
 # Application definition
 
