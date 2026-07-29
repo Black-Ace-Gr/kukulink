@@ -7,13 +7,15 @@ __pycache__/
 
 # Compiled extensions
 *.so
+*.pyd
 
-# Distribution / packaging
+# ===========================
+# Distribution / Packaging
+# ===========================
 .Python
 build/
 dist/
 downloads/
-eggs/
 .eggs/
 lib/
 lib64/
@@ -45,34 +47,39 @@ ENV/
 db.sqlite3
 db.sqlite3-journal
 
-# Media uploads
+# User uploads
 media/
 
-# Static files collected for deployment
+# collectstatic output
 staticfiles/
 
-# Django logs
+# Logs
 *.log
+
+# ===========================
+# Cache
+# ===========================
+.cache/
 
 # ===========================
 # Migrations
 # ===========================
-# Keep migrations except __pycache__
 **/migrations/__pycache__/
 **/migrations/*.pyc
 
 # ===========================
 # IDEs
 # ===========================
-.vscode/
 .idea/
+.vscode/
+*.iml
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 
 # ===========================
-# Operating System Files
+# Operating System
 # ===========================
 .DS_Store
 Thumbs.db
@@ -82,6 +89,7 @@ desktop.ini
 # Testing
 # ===========================
 .coverage
+.coverage.*
 htmlcov/
 .pytest_cache/
 .tox/
@@ -100,7 +108,7 @@ htmlcov/
 .ipynb_checkpoints/
 
 # ===========================
-# Node (if frontend tooling is added later)
+# Node
 # ===========================
 node_modules/
 npm-debug.log*
@@ -115,6 +123,13 @@ yarn-error.log*
 *.swp
 
 # ===========================
-# Render / Deployment
+# Deployment
 # ===========================
 .render/
+.vercel/
+
+# ===========================
+# macOS metadata
+# ===========================
+.AppleDouble
+.LSOverride
