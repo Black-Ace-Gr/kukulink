@@ -50,25 +50,22 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
 ]
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
@@ -107,7 +104,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
