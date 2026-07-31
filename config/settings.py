@@ -61,6 +61,9 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
 ]
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
@@ -147,3 +150,7 @@ print("SECRET_KEY exists:", bool(os.getenv("SECRET_KEY")))
 print("DATABASE_URL exists:", bool(os.getenv("DATABASE_URL")))
 print("GEMINI_API_KEY exists:", bool(os.getenv("GEMINI_API_KEY")))
 print("DEBUG:", DEBUG)
+from django.conf import settings
+
+print("STATICFILES_STORAGE =", getattr(settings, "STATICFILES_STORAGE", None))
+print("STORAGES =", getattr(settings, "STORAGES", None))
