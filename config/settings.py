@@ -127,6 +127,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 X_FRAME_OPTIONS = "DENY"
 
+# settings.py
+GEMINI_MODEL = "gemini-3.5-flash"
 
 LOGGING = {
     "version": 1,
