@@ -51,7 +51,7 @@ db.sqlite3-journal
 media/
 
 # collectstatic output
-staticfiles/
+#staticfiles/
 
 # Logs
 *.log

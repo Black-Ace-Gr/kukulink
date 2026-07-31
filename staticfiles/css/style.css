@@ -1,0 +1,68 @@
+body{
+    background:#f8f9fa;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+main{
+    min-height:75vh;
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+}
+
+.card{
+    border:none;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.btn{
+    border-radius:10px;
+}
+
+.table{
+    background:white;
+}
+
+img{
+    object-fit:cover;
+}
+
+footer{
+    margin-top:80px;
+}
+
+.form-control,
+.form-select{
+    border-radius:10px;
+}
+
+.form-control:focus{
+    box-shadow:none;
+    border-color:#198754;
+}
+
+.hero{
+    background:linear-gradient(rgba(0,0,0,.55),
+                               rgba(0,0,0,.55)),
+               url("../images/hero.jpeg");
+    background-size:cover;
+    background-position:center;
+    color:white;
+    padding:120px 0;
+}
+
+.section-title{
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+.shadow-soft{
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
