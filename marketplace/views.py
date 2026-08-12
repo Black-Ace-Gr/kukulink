@@ -46,10 +46,16 @@ def product_list(request):
 @login_required
 def my_products(request):
 
-    farm = get_object_or_404(
-        Farm,
+    farm = Farm.objects.filter(
         owner=request.user
-    )
+    ).first()
+
+    if not farm:
+        messages.info(
+            request,
+            "Create your farm before managing products."
+        )
+        return redirect("farms:create_farm")
 
     products = Product.objects.filter(
         farm=farm
@@ -62,7 +68,6 @@ def my_products(request):
             "products": products
         }
     )
-
 
 @login_required
 def create_product(request):

@@ -153,3 +153,6 @@ from django.conf import settings
 
 print("STATICFILES_STORAGE =", getattr(settings, "STATICFILES_STORAGE", None))
 print("STORAGES =", getattr(settings, "STORAGES", None))
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
