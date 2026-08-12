@@ -56,7 +56,7 @@ def my_farm(request):
     farm = Farm.objects.filter(owner=request.user).first()
 
     if not farm:
-        return redirect("farms:create")
+        return redirect("farms:create_farm")
 
     return render(
         request,
