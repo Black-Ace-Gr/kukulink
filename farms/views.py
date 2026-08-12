@@ -45,14 +45,18 @@ def create_farm(request):
         }
     )
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .models import Farm
+
 
 @login_required
 def my_farm(request):
+    farm = Farm.objects.filter(owner=request.user).first()
 
-    farm = get_object_or_404(
-        Farm,
-        owner=request.user
-    )
+    if not farm:
+        return redirect("farms:create")
 
     return render(
         request,
@@ -61,7 +65,6 @@ def my_farm(request):
             "farm": farm
         }
     )
-
 
 @login_required
 def edit_farm(request):
